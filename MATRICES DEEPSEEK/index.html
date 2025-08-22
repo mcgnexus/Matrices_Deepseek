@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Avanzada de Matrices - JavaScript Puro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧮 Calculadora Avanzada de Matrices</h1>
+            <p class="subtitle">JavaScript puro - Sin dependencias externas - Cálculos matemáticos completos</p>
+        </header>
+        
+        <nav class="tabs">
+            <button class="tab active" onclick="showTab('basic', event)">Operaciones Básicas</button>
+            <button class="tab" onclick="showTab('advanced', event)">Análisis Avanzado</button>
+            <button class="tab" onclick="showTab('operations', event)">Operaciones Duales</button>
+            <button class="tab" onclick="showTab('systems', event)">Sistemas Lineales</button>
+        </nav>
+
+        <main>
+            <!-- Tab: Operaciones Básicas -->
+            <div id="basic" class="tab-content active">
+                <div class="section">
+                    <h3>1. Crear Matriz</h3>
+                    <div class="control-group">
+                        <label for="matrixSize">Tamaño:</label>
+                        <select id="matrixSize" onchange="generateMatrix()">
+                            <option value="2">2×2</option>
+                            <option value="3" selected>3×3</option>
+                            <option value="4">4×4</option>
+                            <option value="5">5×5</option>
+                            <option value="6">6×6</option>
+                        </select>
+                    </div>
+                    <div id="matrixContainer"></div>
+                    <div class="button-group">
+                        <button onclick="generateMatrix()">🔄 Nueva Matriz</button>
+                        <button onclick="fillRandom()">🎲 Llenar Aleatorio</button>
+                        <button onclick="fillIdentity()">🆔 Matriz Identidad</button>
+                        <button onclick="fillZeros()">⭕ Matriz Ceros</button>
+                        <button onclick="copyMatrixToLatex(currentMatrix, 'A')" class="success">📋 Copiar LaTeX</button>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>2. Cálculos Fundamentales</h3>
+                    <div class="button-group">
+                        <button onclick="calculateDeterminantDisplay()">📊 Determinante</button>
+                        <button onclick="calculateTrace()">📈 Traza</button>
+                        <button onclick="calculateRank()">📏 Rango</button>
+                        <button onclick="calculateInverse()">🔄 Inversa</button>
+                        <button onclick="transposeMatrixDisplay()">↗️ Transpuesta</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Análisis Avanzado -->
+            <div id="advanced" class="tab-content">
+                <div class="section">
+                    <h3>Análisis Espectral y Propiedades</h3>
+                    <div class="button-group">
+                        <button onclick="calculateEigenvalues()">λ Valores Propios</button>
+                        <button onclick="checkOrthogonal()">⟂ Es Ortogonal</button>
+                        <button onclick="checkSymmetric()">⚖️ Es Simétrica</button>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>Factorizaciones</h3>
+                    <div class="button-group">
+                        <button onclick="luDecomposition()">LU Descomposición</button>
+                        <button onclick="qrDecomposition()">QR Descomposición</button>
+                        <button onclick="choleskyDecomposition()">Cholesky</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Operaciones Duales -->
+            <div id="operations" class="tab-content">
+                <div class="section">
+                    <h3>Operaciones con Dos Matrices</h3>
+                    <div class="control-group">
+                        <label for="matrixSizeB">Tamaño Matriz B:</label>
+                        <select id="matrixSizeB" onchange="generateMatrixB()">
+                            <option value="2">2×2</option>
+                            <option value="3" selected>3×3</option>
+                            <option value="4">4×4</option>
+                            <option value="5">5×5</option>
+                            <option value="6">6×6</option>
+                        </select>
+                        <button onclick="generateMatrixB()">Generar Matriz B</button>
+                    </div>
+                    
+                    <div class="matrix-container">
+                        <div>
+                            <h4>Matriz A</h4>
+                            <div id="matrixADisplay"></div>
+                            <button onclick="copyMatrixToLatex(currentMatrix, 'A')" class="success" style="margin-top: 10px;">📋 Copiar LaTeX A</button>
+                        </div>
+                        <div class="operation-symbol" id="operationSymbol">+</div>
+                        <div>
+                            <h4>Matriz B</h4>
+                            <div id="matrixBContainer"></div>
+                            <button onclick="copyMatrixToLatex(currentMatrixB, 'B')" class="success" style="margin-top: 10px;">📋 Copiar LaTeX B</button>
+                        </div>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button onclick="addMatrices()">➕ Sumar A + B</button>
+                        <button onclick="subtractMatrices()">➖ Restar A - B</button>
+                        <button onclick="multiplyMatrices()">✖️ Multiplicar A × B</button>
+                        <button onclick="calculateCommutator()">🔄 [A,B] = AB - BA</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Sistemas Lineales -->
+            <div id="systems" class="tab-content">
+                <div class="section">
+                    <h3>Resolver Sistemas Lineales Ax = b</h3>
+                    <div class="control-group">
+                        <button onclick="generateSystemVector()">Generar vector b</button>
+                        <button onclick="fillRandomVector()">Vector b aleatorio</button>
+                    </div>
+                    
+                    <div class="matrix-container">
+                        <div>
+                            <h4>Matriz A (coeficientes)</h4>
+                            <div id="systemMatrixDisplay"></div>
+                            <button onclick="copyMatrixToLatex(currentMatrix, 'A')" class="success" style="margin-top: 10px;">📋 Copiar LaTeX A</button>
+                        </div>
+                        <div class="operation-symbol">×</div>
+                        <div>
+                            <h4>Vector x</h4>
+                            <div style="font-size: 1.2em; margin: 20px;">
+                                [x₁, x₂, ..., xₙ]ᵀ
+                            </div>
+                        </div>
+                        <div class="operation-symbol">=</div>
+                        <div>
+                            <h4>Vector b</h4>
+                            <div id="vectorBContainer"></div>
+                            <button onclick="copyVectorToLatex(vectorB, 'b')" class="success" style="margin-top: 10px;">📋 Copiar LaTeX b</button>
+                        </div>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button onclick="solveSystem()">🎯 Resolver Sistema (LU)</button>
+                        <button onclick="solveSystemCramer()">📐 Regla de Cramer</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="result"></div>
+            <div id="steps"></div>
+            <div id="latexOutput"></div>
+
+            <!-- Sección de ayuda con chatbot especializado -->
+            <div class="llm-helper">
+                <h3>🤖 ¿Necesitas Análisis Más Profundos?</h3>
+                <p>Para cálculos avanzados, demostraciones detalladas, o análisis especializados como:</p>
+                <ul>
+                    <li>Diagonalización completa de matrices</li>
+                    <li>Descomposición en valores singulares (SVD)</li>
+                    <li>Métodos iterativos para valores propios</li>
+                    <li>Análisis de estabilidad numérica</li>
+                    <li>Interpretación de resultados complejos</li>
+                    <li>Aplicaciones específicas en ingeniería/física</li>
+                    <li>Demostraciones paso a paso con LaTeX</li>
+                </ul>
+                <br>
+                <a href="https://gemini.google.com/" target="_blank" class="llm-link">🧠 Consultar Asistente IA</a>
+                <p class="tip">
+                    💡 Tip: Usa los botones "Copiar LaTeX" para exportar matrices y vectores en formato compatible con LaTeX.
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

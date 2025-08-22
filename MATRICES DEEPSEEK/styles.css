@@ -1,0 +1,353 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', 'Nunito Sans', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #F4F6F8;
+    min-height: 100vh;
+    color: #333333;
+    line-height: 1.6;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #F4F6F8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    color: #00509D;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #30C48D;
+    flex-wrap: wrap;
+}
+
+.tab {
+    padding: 12px 24px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #333333;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.tab.active {
+    color: #00509D;
+    border-bottom-color: #30C48D;
+    font-weight: bold;
+}
+
+.tab:hover {
+    color: #00509D;
+    background-color: #F4F6F8;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.section {
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 1px solid #F4F6F8;
+    border-radius: 10px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.section h3 {
+    margin-top: 0;
+    color: #00509D;
+    font-size: 1.3em;
+    border-bottom: 2px solid #30C48D;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.matrix-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+td {
+    border: 1px solid #30C48D;
+    padding: 8px;
+    text-align: center;
+    background-color: white;
+    min-width: 70px;
+}
+
+input.matrix-input {
+    width: 60px;
+    text-align: center;
+    border: 1px solid #00509D;
+    border-radius: 6px;
+    padding: 8px 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    font-family: 'Lato', sans-serif;
+}
+
+input.matrix-input:focus {
+    outline: none;
+    border-color: #30C48D;
+    box-shadow: 0 0 5px rgba(48, 196, 141, 0.3);
+}
+
+.button-group {
+    text-align: center;
+    margin-top: 15px;
+}
+
+button {
+    background: #30C48D;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s;
+    font-family: 'Lato', sans-serif;
+}
+
+button:hover {
+    background: #279a72;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button.success {
+    background: #00509D;
+}
+
+button.success:hover {
+    background: #003d7a;
+}
+
+button.secondary {
+    background: #95a5a6;
+}
+
+button.danger {
+    background: #e74c3c;
+}
+
+.result {
+    background: #F4F6F8;
+    border-left: 4px solid #30C48D;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.error {
+    background: #fdf2f2;
+    border-left: 4px solid #e74c3c;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    color: #c0392b;
+}
+
+.method-explanation {
+    background: #e6f7ff;
+    border-left: 4px solid #00509D;
+    padding: 15px;
+    margin: 15px 0;
+    font-size: 14px;
+    border-radius: 0 8px 8px 0;
+}
+
+.step {
+    margin: 10px 0;
+    padding: 12px;
+    background: #F4F6F8;
+    border-radius: 8px;
+    border-left: 3px solid #00509D;
+}
+
+pre {
+    background: #00509D;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 12px;
+}
+
+.control-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.control-group label {
+    font-weight: 500;
+    color: #00509D;
+}
+
+select {
+    padding: 8px 12px;
+    border: 1px solid #00509D;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+}
+
+.eigenvalue-display {
+    background: #F4F6F8;
+    border: 1px solid #30C48D;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.eigenvalue-display h4 {
+    margin-top: 0;
+    color: #00509D;
+}
+
+.llm-helper {
+    background: #F4F6F8;
+    border: 2px solid #00509D;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.llm-helper h3 {
+    color: #00509D;
+    margin-top: 0;
+}
+
+.llm-helper ul {
+    text-align: left;
+    display: inline-block;
+    margin: 15px 0;
+}
+
+.llm-link {
+    display: inline-block;
+    background: #30C48D;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 10px 5px;
+    transition: all 0.3s;
+    font-family: 'Lato', sans-serif;
+}
+
+.llm-link:hover {
+    background: #279a72;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tip {
+    font-size: 0.9em;
+    margin-top: 15px;
+    color: #666;
+}
+
+.operation-symbol {
+    font-size: 2em;
+    color: #00509D;
+    font-weight: bold;
+    align-self: center;
+}
+
+.latex-output {
+    background: #00509D;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    overflow-x: auto;
+    font-family: monospace;
+}
+
+@media (max-width: 768px) {
+    .matrix-container {
+        flex-direction: column;
+    }
+    
+    .tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab {
+        flex: 1;
+        min-width: 120px;
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+}
